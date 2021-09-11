@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Login</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="../css/login.css" rel="stylesheet">
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery-1.11.1.min.js"></script>
+    <script src="../js/login.js"></script>
+</head>
+
+<body>
+
+    <div class="sidenav">
+        <div class="login-main-text">
+            <h2>Application<br> Login Page</h2>
+            <p>Login or register from here to access.</p>
+        </div>
+    </div>
+    <div class="main">
+        <div class="col-md-6 col-sm-12">
+            <div class="login-form">
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label>User Name</label>
+                        <input id="userName" type="text" class="form-control" placeholder="User Name">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input id="password" type="password" class="form-control" placeholder="Password">
+                    </div>
+                    <button type="submit" class="btn btn-black">Login</button>
+                    <button type="submit" class="btn btn-secondary">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    const electron = require('electron');
+    const login = require('../controller/Login.js');
+    let loginObject;
+
+    const form = document.querySelector('form');
+    form.addEventListener('submit', submitForm);
+
+    function submitForm(e) {
+        e.preventDefault();
+        const userName = document.querySelector('#userName').value;
+        const password = document.querySelector('#password').value;
+
+        loginObject = (new login.Login);
+        loginWindow = loginObject.loginCheck(userName, password);
+
+    }
+</script>
+
+</html>
